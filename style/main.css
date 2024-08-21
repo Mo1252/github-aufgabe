@@ -12018,7 +12018,7 @@ body {
 .logo-span {
   text-transform: uppercase;
   font-weight: 700;
-  color: #0366d6;
+  color: #637aa8;
   padding-left: 0.1rem;
 }
 
@@ -12042,7 +12042,7 @@ img {
 
 .btn {
   padding: 0.5rem 1.5rem;
-  background-color: #0366d6;
+  background-color: #637aa8;
   color: white;
 }
 
@@ -12065,10 +12065,11 @@ img {
   font-size: 1rem;
 }
 .search button:hover {
-  background-color: #0d6efd;
+  background-color: #f8f9fa;
 }
 
-.repositories, .details {
+.repositories,
+.details {
   margin-bottom: 2rem;
 }
 
@@ -12083,7 +12084,7 @@ li {
   cursor: pointer;
 }
 li:hover {
-  background-color: #0d6efd;
+  background-color: #E9E0D4;
 }
 
 .error {
@@ -12107,4 +12108,11 @@ li:hover {
   background-repeat: no-repeat;
   margin-left: 10px;
   vertical-align: middle;
+}
+
+.btn-commit {
+  padding: 0.3rem 1rem;
+  background-color: #637aa8;
+  color: black;
+  border-radius: 0.5rem;
 }/*# sourceMappingURL=main.css.map */
