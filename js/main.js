@@ -1,6 +1,7 @@
 document.getElementById('searchBtn').addEventListener('click', () => {
     const username = document.getElementById('username').value.trim();
     if (username) {
+       
         fetchUserRepos(username);
     }
 });
@@ -56,6 +57,7 @@ function displayUserRepos(repos) {
 }
 
 async function fetchRepoDetails(username, repoName) {
+    setUrlParams({ username, repoName });
     try {
         const issuesResponse = await fetch(`https://api.github.com/repos/${username}/${repoName}/issues`);
         const issues = await issuesResponse.json();
@@ -67,9 +69,6 @@ async function fetchRepoDetails(username, repoName) {
         displayError('Fehler beim Abrufen der Repository-Details');
     }
 }
-
-
-
 
 function displayCommitsIssues(issues, commits) {
     clearRepoList();
@@ -120,5 +119,42 @@ function loadLastSearch() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadLastSearch(); 
+    const params = getUrlParams();
+    if (params.username) {
+        document.getElementById('username').value = params.username;
+        fetchUserRepos(params.username);
+    }
+});
+
+function setUrlParams(params) {
+    const url = new URL(window.location.href);
+    for (const key in params) {
+        if (params.hasOwnProperty(key)) {
+            url.searchParams.set(key, params[key]);
+        }
+    }
+    window.history.pushState({}, '', url);
+  }
+
+
+
+
+function getUrlParams() {
+  const urlParams = new URLSearchParams(window.location.search);
+  return {
+      username: urlParams.get('username'),
+      repoName: urlParams.get('repoName')
+  };
+}
+
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const params = getUrlParams();
+    if (params.username) {
+        document.getElementById('username').value = params.username;
+        await fetchUserRepos(params.username);
+        if (params.repoName) {
+            fetchRepoDetails(params.username, params.repoName);
+        }
+    }
 });

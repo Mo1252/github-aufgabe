@@ -1,14 +1,15 @@
 {
-  "dependencies": {
-    "bootstrap": "^5.3.3",
-    "node-sass": "^9.0.0"
-  },
   "name": "github-aufgabe",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "node-sass": "sass -w scsss/ :dist/css/"
+    "build-css": "sass style/style.scss:css/style.css",
+    "watch-css": "sass --watch style/style.scss:css/style.css"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "sass": "^1.62.0"
   },
   "keywords": [],
   "author": "",
