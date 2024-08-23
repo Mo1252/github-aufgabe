@@ -37,7 +37,7 @@ async function fetchUserRepos(username) {
             displayError('Der Benutzer hat keine Repositories');
         } else {
             displayUserRepos(repos);
-            saveSearchData(username, repos); // Suchergebnisse speichern
+        
         }
     } catch (error) {
         displayError('Der Benutzer wurde nicht gefunden');
@@ -56,6 +56,7 @@ function displayUserRepos(repos) {
     });
 }
 
+
 async function fetchRepoDetails(username, repoName) {
     setUrlParams({ username, repoName });
     try {
@@ -64,7 +65,7 @@ async function fetchRepoDetails(username, repoName) {
         const commitsResponse = await fetch(`https://api.github.com/repos/${username}/${repoName}/commits?per_page=10`);
         const commits = await commitsResponse.json();
         displayCommitsIssues(issues, commits);
-        saveRepoDetails(issues, commits); // Repository-Details speichern
+      
     } catch (error) {
         displayError('Fehler beim Abrufen der Repository-Details');
     }
