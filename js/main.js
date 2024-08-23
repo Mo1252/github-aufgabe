@@ -68,6 +68,9 @@ async function fetchRepoDetails(username, repoName) {
     }
 }
 
+
+
+
 function displayCommitsIssues(issues, commits) {
     clearRepoList();
     const issuesList = document.getElementById('issues');
