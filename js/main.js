@@ -1,7 +1,7 @@
 document.getElementById('searchBtn').addEventListener('click', () => {
     const username = document.getElementById('username').value.trim();
     if (username) {
-       
+
         fetchUserRepos(username);
     }
 });
@@ -93,30 +93,7 @@ function displayCommitsIssues(issues, commits) {
     })
 }
 
-function saveSearchData(username, repos) {
-    localStorage.setItem('lastUsername', username);
-    localStorage.setItem('lastRepos', JSON.stringify(repos));
-}
 
-function saveRepoDetails(issues, commits) {
-    localStorage.setItem('lastIssues', JSON.stringify(issues));
-    localStorage.setItem('lastCommits', JSON.stringify(commits));
-}
-function loadLastSearch() {
-    const lastUsername = localStorage.getItem('lastUsername');
-    const lastRepos = localStorage.getItem('lastRepos');
-    const lastIssues = localStorage.getItem('lastIssues');
-    const lastCommits = localStorage.getItem('lastCommits');
-
-    if (lastUsername && lastRepos) {
-        displayUserRepos(JSON.parse(lastRepos));
-        document.getElementById('username').value = lastUsername;
-
-        if (lastIssues && lastCommits) {
-            displayCommitsIssues(JSON.parse(lastIssues), JSON.parse(lastCommits));
-        }
-    }
-}
 
 document.addEventListener('DOMContentLoaded', () => {
     const params = getUrlParams();
@@ -134,20 +111,20 @@ function setUrlParams(params) {
         }
     }
     window.history.pushState({}, '', url);
-  }
+}
 
 
 
 
 function getUrlParams() {
-  const urlParams = new URLSearchParams(window.location.search);
-  return {
-      username: urlParams.get('username'),
-      repoName: urlParams.get('repoName')
-  };
+    const urlParams = new URLSearchParams(window.location.search);
+    return {
+        username: urlParams.get('username'),
+        repoName: urlParams.get('repoName')
+    };
 }
 
-
+4
 document.addEventListener('DOMContentLoaded', async () => {
     const params = getUrlParams();
     if (params.username) {
