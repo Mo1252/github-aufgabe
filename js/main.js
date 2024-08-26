@@ -84,12 +84,12 @@ function displayCommitsIssues(issues, commits) {
 
     commits.forEach(commit => {
         const li = document.createElement('li');
-        li.innerHTML = `<strong>${commit.commit.message}</strong></br> erstellt von ${commit.commit.author.name} am ${new Date(commit.commit.author.date).toLocaleDateString()}<br><a href="${commit.html_url}" class="btn-commit mt-3 d-inline-block">Zum Commit</a>`;
+        li.innerHTML = `<strong>${commit.commit.message}</strong></br> erstellt von ${commit.commit.author.name} am ${new Date(commit.commit.author.date).toLocaleDateString()}<br><a href="${commit.html_url}" class="btn-commit mt-3 d-inline-block" target="_blank" >Zum Commit</a>`;
         commitsList.appendChild(li);
     })
     issues.forEach(issue => {
         const li = document.createElement('li');
-        li.innerHTML = `<strong>${issue.title}</strong> erstellt am ${new Date(issue.created_at).toLocaleDateString()} von  ${issue.user.login}<br><a href="${issue.html_url}" class="btn-commit  mt-3 d-inline-block">Zum Issue</a>`;
+        li.innerHTML = `<strong>${issue.title}</strong> erstellt am ${new Date(issue.created_at).toLocaleDateString()} von  ${issue.user.login}<br><a href="${issue.html_url}" class="btn-commit  mt-3 d-inline-block" target="_blank">Zum Issue</a>`;
         issuesList.appendChild(li);
     })
 }
@@ -97,7 +97,7 @@ function displayCommitsIssues(issues, commits) {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const params = getUrlParams();
+    const para  
     if (params.username) {
         document.getElementById('username').value = params.username;
         fetchUserRepos(params.username);
@@ -116,7 +116,6 @@ function setUrlParams(params) {
 
 
 
-
 function getUrlParams() {
     const urlParams = new URLSearchParams(window.location.search);
     return {
@@ -125,7 +124,6 @@ function getUrlParams() {
     };
 }
 
-4
 document.addEventListener('DOMContentLoaded', async () => {
     const params = getUrlParams();
     if (params.username) {
