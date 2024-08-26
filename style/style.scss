@@ -155,7 +155,8 @@ li {
 #commits{
     max-height: 600px; 
     overflow-y: scroll;
-    
+    background-color:  $light;
+
     padding: 10px; 
 }
 
@@ -168,3 +169,12 @@ li {
 a{
   text-decoration: none !important;
 }
+
+
+
+
+
+
+
+
+

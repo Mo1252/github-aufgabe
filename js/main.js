@@ -97,7 +97,7 @@ function displayCommitsIssues(issues, commits) {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const para  
+    const params = getUrlParams();
     if (params.username) {
         document.getElementById('username').value = params.username;
         fetchUserRepos(params.username);
